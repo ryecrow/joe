@@ -1,2 +1,2 @@
-# joe
-Java implementation of Outlook Express' DBX file
+# Joe
+Java implementation of parsing Outlook Express' DBX file
