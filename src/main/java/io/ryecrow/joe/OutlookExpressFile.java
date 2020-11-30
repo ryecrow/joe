@@ -6,6 +6,7 @@ import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.nio.ByteBuffer;
 
 public class OutlookExpressFile implements Closeable {
 
@@ -53,20 +54,22 @@ public class OutlookExpressFile implements Closeable {
     }
 
     private void checkFile() throws IOException {
-        int magic = this.dbxFile.readInt();
+        byte[] header = new byte[28];
+        this.dbxFile.read(header);
+        ByteBuffer buf = ByteBuffer.wrap(header);
+        int magic = buf.getInt();
         if (magic != 0xcfad12fe) {
             throw new IOException("Invalid file header. Expected: 0xcfad12fe. Actual: 0x" + Integer.toHexString(magic));
         }
-        int ft = this.dbxFile.readInt();
+        int ft = buf.getInt();
         DatabaseType dbType = DatabaseType.getByUid(ft);
         if (dbType == null) {
             throw new IOException("Invalid file type: 0x" + Integer.toHexString(ft));
         }
         this.dbType = dbType;
 
-        if ((dbxFile.readLong() != 0x66e3d1119a4e00c0L) && (dbxFile.readLong() != 0x4fa309d405000000L)) {
+        if ((buf.getLong() != 0x66e3d1119a4e00c0L) && (buf.getLong() != 0x4fa309d405000000L) && (buf.getInt() != 0x05000000)) {
             throw new IOException("Invalid DBX file format");
         }
-        this.dbxFile.seek(0);
     }
 }
