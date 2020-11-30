@@ -20,7 +20,7 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
-    - name: Test with Maven
+    - name: Test with Maven and JUnit
       run: mvn -B test --file pom.xml
     - name: Build with Maven
       run: mvn -B package --file pom.xml
