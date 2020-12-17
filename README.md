@@ -11,4 +11,4 @@
 ---
 
 ## What is Joe
-Joe is an Outlook Express' DBX file parser implemented in Java
+Joe is an Outlook Express' DBX file parser implemented in ~~Java~~ **Kotlin** (but still running on JVM)
