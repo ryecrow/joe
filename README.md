@@ -4,7 +4,7 @@
 
 [CI_Badge]: https://github.com/ryecrow/joe/workflows/Java%20CI%20with%20Gradle/badge.svg
 
-[CI]: https://github.com/ryecrow/joe/actions?workflow=Java+CI+with+Maven
+[CI]: https://github.com/ryecrow/joe/actions?workflow=Java+CI+with+Gradle
 [L_Badge]: https://img.shields.io/github/license/ryecrow/joe
 [WIP_Badge]: https://img.shields.io/badge/status-WIP-inactive
 
